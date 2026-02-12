@@ -260,7 +260,8 @@ window.addEventListener("DOMContentLoaded",()=>{
     e.preventDefault();
 
     const nombre = document.getElementById("fullName").value.trim();
-    const telefono = document.getElementById("phone").value.trim() || null;
+    const phoneEl = document.getElementById("phone");
+    const telefono = phoneEl ? phoneEl.value.trim() : null;;
     const asistira = document.getElementById("willAttend").value;
     const cantidadInput = document.getElementById("peopleCount").value;
 
