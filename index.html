@@ -1,312 +1,231 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quince Años - Valeria Abigail</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quince Años - Valeria Abigail</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --pink:#e7a6b5;
-      --pink2:#d98b9e;
-      --glass: rgba(255,255,255,.78);
-      --shadow: 0 20px 50px rgba(0,0,0,.18);
-    }
-    body{
-      margin:0;
-      min-height:100vh;
-      font-family: "Playfair Display", serif;
-      background:#f8e9ef;
-      overflow-x:hidden;
-    }
+<style>
+:root{
+  --pink:#e7a6b5;
+  --pink2:#d98b9e;
+  --glass: rgba(255,255,255,.78);
+  --shadow: 0 20px 50px rgba(0,0,0,.18);
+}
+body{
+  margin:0;
+  min-height:100vh;
+  font-family: "Playfair Display", serif;
+  background:#f8e9ef;
+  overflow-x:hidden;
+}
 
-    /* Fondo con tu invitación */
-    .hero{
-      position:relative;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.65)),
-        url("./invita.png") center/cover no-repeat fixed;
-    }
+/* Fondo */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.65)),
+    url("./invita.png") center/cover no-repeat fixed;
+}
 
-    /* brillo */
-    .sparkle{
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      background-image:
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,.9) 0 2px, transparent 3px),
-        radial-gradient(circle at 70% 20%, rgba(255,255,255,.8) 0 1.5px, transparent 3px),
-        radial-gradient(circle at 80% 70%, rgba(255,255,255,.85) 0 2px, transparent 4px),
-        radial-gradient(circle at 30% 80%, rgba(255,255,255,.75) 0 1.5px, transparent 3px);
-      animation: twinkle 4s ease-in-out infinite alternate;
-      opacity:.8;
-    }
-    @keyframes twinkle{ from{filter:blur(0px)} to{filter:blur(1px)} }
+/* Brillo */
+.sparkle{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+}
 
-    /* pétalos */
-    .petal{
-      position:absolute;
-      top:-10vh;
-      width:14px;height:10px;
-      background:rgba(231,166,181,.85);
-      border-radius: 14px 14px 14px 2px;
-      transform: rotate(25deg);
-      animation: fall linear infinite;
-      filter: blur(.2px);
-      opacity:.85;
-    }
-    @keyframes fall{
-      0%{ transform:translateY(-10vh) translateX(0) rotate(0deg); }
-      100%{ transform:translateY(110vh) translateX(70px) rotate(260deg); }
-    }
+/* Pétalos */
+#petals{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+}
 
-    .card{
-      width:min(720px, 94vw);
-      background:var(--glass);
-      border:1px solid rgba(255,255,255,.6);
-      box-shadow:var(--shadow);
-      border-radius:28px;
-      padding:26px 18px;
-      text-align:center;
-      backdrop-filter: blur(8px);
-    }
+.petal{
+  position:absolute;
+  top:-10vh;
+  width:14px;height:10px;
+  background:rgba(231,166,181,.85);
+  border-radius:14px 14px 14px 2px;
+  transform:rotate(25deg);
+  animation:fall linear infinite;
+  opacity:.85;
+}
 
-    .title{
-      font-family:"Great Vibes", cursive;
-      font-size:56px;
-      margin:6px 0 2px;
-      color:#8a4b5a;
-    }
-    .sub{
-      margin:0;
-      font-size:18px;
-      color:#6b4a52;
-    }
-    .name{
-      margin:8px 0 14px;
-      font-size:26px;
-      font-weight:600;
-      color:#7a3f4d;
-    }
+@keyframes fall{
+  0%{ transform:translateY(-10vh) translateX(0) rotate(0deg); }
+  100%{ transform:translateY(110vh) translateX(70px) rotate(260deg); }
+}
 
-    .pill{
-      display:inline-block;
-      padding:10px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,.7);
-      border:1px solid rgba(231,166,181,.45);
-      margin:6px 6px 0;
-      color:#6b4a52;
-      font-size:14px;
-    }
+/* Tarjeta */
+.card{
+  width:min(720px,94vw);
+  background:var(--glass);
+  border:1px solid rgba(255,255,255,.6);
+  box-shadow:var(--shadow);
+  border-radius:28px;
+  padding:26px 18px;
+  text-align:center;
+  backdrop-filter: blur(8px);
+  position:relative;
+  z-index:10;
+}
 
-    .btn{
-      margin-top:18px;
-      padding:14px 22px;
-      border:none;
-      border-radius:999px;
-      background:linear-gradient(180deg, var(--pink), var(--pink2));
-      color:white;
-      font-weight:600;
-      font-size:16px;
-      cursor:pointer;
-      box-shadow: 0 12px 30px rgba(217,139,158,.35);
-    }
-    .btn:hover{ transform: translateY(-1px); }
+.title{
+  font-family:"Great Vibes", cursive;
+  font-size:56px;
+  margin:6px 0 2px;
+  color:#8a4b5a;
+}
+.sub{ font-size:18px; color:#6b4a52; }
+.name{ font-size:26px; font-weight:600; color:#7a3f4d; }
 
-    .count{
-      margin-top:12px;
-      font-size:14px;
-      color:#6b4a52;
-    }
+.pill{
+  display:inline-block;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.7);
+  border:1px solid rgba(231,166,181,.45);
+  margin:6px;
+  font-size:14px;
+}
 
-    /* modal */
-    .modalBackdrop{
-      position:fixed; inset:0;
-      background:rgba(0,0,0,.35);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-    }
-    .modal{
-      width:min(520px, 96vw);
-      background:white;
-      border-radius:22px;
-      padding:18px;
-      box-shadow: var(--shadow);
-    }
-    .modal h3{
-      margin:6px 0 10px;
-      color:#7a3f4d;
-    }
-    .row{
-      display:flex; gap:10px;
-      flex-wrap:wrap;
-    }
-    input, select{
-      width:100%;
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid #e9d6dc;
-      font-size:14px;
-      outline:none;
-    }
-    .row > *{ flex:1 1 220px; }
-    .actions{
-      display:flex; gap:10px;
-      margin-top:12px;
-    }
-    .btn2{
-      flex:1;
-      padding:12px 14px;
-      border-radius:14px;
-      border:none;
-      cursor:pointer;
-      font-weight:600;
-    }
-    .cancel{ background:#f3f3f3; }
-    .send{ background:linear-gradient(180deg, var(--pink), var(--pink2)); color:white; }
+/* BOTÓN */
+.btn{
+  margin-top:18px;
+  padding:14px 22px;
+  border:none;
+  border-radius:999px;
+  background:linear-gradient(180deg,var(--pink),var(--pink2));
+  color:white;
+  font-weight:600;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 12px 30px rgba(217,139,158,.35);
+}
+.btn:hover{ transform:translateY(-1px); }
 
-    .msg{ margin-top:10px; font-size:14px; color:#2e7d32; }
-    .err{ margin-top:10px; font-size:14px; color:#b00020; }
-  </style>
+.count{ margin-top:12px; font-size:14px; }
+
+/* MODAL */
+.modalBackdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.35);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  z-index:9999;
+}
+.modal{
+  width:min(520px,96vw);
+  background:white;
+  border-radius:22px;
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+.row{ display:flex; gap:10px; flex-wrap:wrap; }
+input,select{
+  width:100%;
+  padding:12px;
+  border-radius:14px;
+  border:1px solid #e9d6dc;
+}
+.actions{ display:flex; gap:10px; margin-top:12px; }
+.btn2{
+  flex:1;
+  padding:12px;
+  border-radius:14px;
+  border:none;
+  cursor:pointer;
+}
+.cancel{ background:#f3f3f3; }
+.send{ background:linear-gradient(180deg,var(--pink),var(--pink2)); color:white; }
+</style>
 </head>
 
 <body>
-  <div class="hero">
-    <div class="sparkle"></div>
 
-    <!-- pétalos generados por JS -->
-    <div id="petals"></div>
+<div class="hero">
+  <div class="sparkle"></div>
+  <div id="petals"></div>
 
-    <div class="card">
-      <div class="title">Quince Años</div>
-      <p class="sub">Con la bendición de Dios y el amor infinito de mis padres</p>
-      <div class="name">Valeria Abigail Vásquez Gómez</div>
+  <div class="card">
+    <div class="title">Mis 15 Años</div>
+    <p class="sub">Con la bendición de Dios y el amor infinito de mis padres</p>
+    <div class="name">Valeria Abigail Vásquez Gómez</div>
 
-      <div class="pill">📅 28 de febrero</div>
-      <div class="pill">🕛 12:00 P.M.</div>
-      <div class="pill">📍 Bella Unión, al costado del Sauna Edén</div>
-      <div class="pill">👨‍👩‍👧 Padres: Marina Gómez e Isael Vásquez</div>
+    <div class="pill">📅 28 de febrero</div>
+    <div class="pill">🕛 12:00 P.M.</div>
+    <div class="pill">📍 Bella Unión, al costado del Sauna Edén</div>
+    <div class="pill">👨‍👩‍👧 Padres: Marina Gómez e Isael Vásquez</div>
 
-      <div style="margin-top:14px; color:#6b4a52; font-size:14px;">
-        “El Señor cumplirá su propósito en mí; tu gran amor, Señor, perdura para siempre.”<br>
-        <b>Salmo 138:8</b>
-      </div>
+    <button class="btn" id="openRsvp" type="button">
+      Confirmar Asistencia
+    </button>
 
-      <button class="btn" id="openRsvp">Confirmar Asistencia</button>
-
-      <div class="count">
-        👥 Asistentes confirmados (total): <b id="totalCount">—</b>
-      </div>
+    <div class="count">
+      👥 Asistentes confirmados: <b id="totalCount">0</b>
     </div>
   </div>
+</div>
 
-  <!-- Modal RSVP -->
-  <div class="modalBackdrop" id="backdrop">
-    <div class="modal">
-      <h3>Confirmación de asistencia</h3>
-
-      <form id="rsvpForm">
-        <div class="row">
-          <input id="fullName" type="text" placeholder="Nombre completo *" required />
-          <input id="phone" type="tel" placeholder="Teléfono (opcional)" />
-        </div>
-
-        <div class="row" style="margin-top:10px;">
-          <select id="willAttend" required>
-            <option value="">¿Asistirá? *</option>
-            <option value="si">Sí</option>
-            <option value="no">No</option>
-          </select>
-
-          <input id="peopleCount" type="number" min="1" max="15" placeholder="¿Cuántas personas en total? (incluyéndote)" />
-        </div>
-
-        <div class="actions">
-          <button type="button" class="btn2 cancel" id="closeRsvp">Cancelar</button>
-          <button type="submit" class="btn2 send">Enviar</button>
-        </div>
-
-        <div class="msg" id="okMsg" style="display:none;"></div>
-        <div class="err" id="errMsg" style="display:none;"></div>
-      </form>
-    </div>
+<!-- MODAL -->
+<div class="modalBackdrop" id="backdrop">
+  <div class="modal">
+    <h3>Confirmación de asistencia</h3>
+    <form id="rsvpForm">
+      <div class="row">
+        <input id="fullName" type="text" placeholder="Nombre completo *" required>
+      </div>
+      <div class="row" style="margin-top:10px;">
+        <select id="willAttend" required>
+          <option value="">¿Asistirá?</option>
+          <option value="si">Sí</option>
+          <option value="no">No</option>
+        </select>
+        <input id="peopleCount" type="number" min="1" max="15" placeholder="¿Cuántas personas?">
+      </div>
+      <div class="actions">
+        <button type="button" class="btn2 cancel" id="closeRsvp">Cancelar</button>
+        <button type="submit" class="btn2 send">Enviar</button>
+      </div>
+    </form>
   </div>
+</div>
 
-  <!-- Firebase SDK (v10 modular) -->
-  <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
-  import { getFirestore, doc, setDoc, collection, addDoc, serverTimestamp, onSnapshot, updateDoc, increment } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+<script>
+// BOTÓN FUNCIONANDO
+window.addEventListener("DOMContentLoaded",()=>{
+  const backdrop=document.getElementById("backdrop");
+  document.getElementById("openRsvp").onclick=()=> backdrop.style.display="flex";
+  document.getElementById("closeRsvp").onclick=()=> backdrop.style.display="none";
+  backdrop.onclick=(e)=>{ if(e.target===backdrop) backdrop.style.display="none"; }
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyAiSUeZm7VjaGKVjS58xMllXrBxifLvcJU",
-    authDomain: "quince-valeria.firebaseapp.com",
-    projectId: "quince-valeria",
-    storageBucket: "quince-valeria.firebasestorage.app",
-    messagingSenderId: "475713605323",
-    appId: "1:475713605323:web:82d84b9df0ee40b43bd54e",
-    measurementId: "G-RFF8RBXLQ7"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  const form = document.getElementById("rsvpForm");
-  const totalCountEl = document.getElementById("totalCount");
-
-  // Contador en vivo
-  const statsRef = doc(db, "stats", "public");
-  onSnapshot(statsRef, (snap) => {
-    if (snap.exists()) {
-      totalCountEl.textContent = snap.data().totalAsistentes ?? 0;
-    } else {
-      totalCountEl.textContent = 0;
-    }
-  });
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const nombre = document.getElementById("fullName").value.trim();
-    const telefono = document.getElementById("phone").value.trim();
-    const asistira = document.getElementById("willAttend").value;
-    const cantidad = parseInt(document.getElementById("peopleCount").value) || 0;
-
-    try {
-      await addDoc(collection(db, "rsvps"), {
-        nombre,
-        telefono,
-        asistira,
-        cantidad: asistira === "si" ? cantidad : 0,
-        creadoEn: serverTimestamp()
-      });
-
-      // Si confirmó que sí, incrementa contador
-      if (asistira === "si" && cantidad > 0) {
-        await updateDoc(statsRef, {
-          totalAsistentes: increment(cantidad)
-        });
-      }
-
-      alert("✅ Confirmación registrada correctamente");
-      form.reset();
-
-    } catch (error) {
-      console.error(error);
-      alert("❌ Ocurrió un error al registrar.");
-    }
-  });
+  // pétalos
+  const host=document.getElementById("petals");
+  for(let i=0;i<20;i++){
+    const p=document.createElement("div");
+    p.className="petal";
+    p.style.left=Math.random()*100+"vw";
+    p.style.animationDuration=(6+Math.random()*6)+"s";
+    host.appendChild(p);
+  }
+});
 </script>
+
 </body>
 </html>
