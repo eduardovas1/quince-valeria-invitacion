@@ -226,6 +226,76 @@ window.addEventListener("DOMContentLoaded",()=>{
   }
 });
 </script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+  import {
+    getFirestore, doc, onSnapshot, collection, addDoc,
+    serverTimestamp, updateDoc, increment
+  } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAiSUeZm7VjaGKVjS58xMllXrBxifLvcJU",
+    authDomain: "quince-valeria.firebaseapp.com",
+    projectId: "quince-valeria",
+    storageBucket: "quince-valeria.firebasestorage.app",
+    messagingSenderId: "475713605323",
+    appId: "1:475713605323:web:82d84b9df0ee40b43bd54e",
+    measurementId: "G-RFF8RBXLQ7"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const totalCountEl = document.getElementById("totalCount");
+  const statsRef = doc(db, "stats", "public");
+
+  // Contador en vivo
+  onSnapshot(statsRef, (snap) => {
+    totalCountEl.textContent = snap.exists() ? (snap.data().totalAsistentes ?? 0) : 0;
+  });
+
+  // Guardar RSVP
+  const form = document.getElementById("rsvpForm");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const nombre = document.getElementById("fullName").value.trim();
+    const telefono = document.getElementById("phone").value.trim() || null;
+    const asistira = document.getElementById("willAttend").value;
+    const cantidadInput = document.getElementById("peopleCount").value;
+
+    let cantidad = 0;
+    if (asistira === "si") {
+      const n = Number(cantidadInput);
+      if (!Number.isFinite(n) || n < 1) {
+        alert("❌ Indica cuántas personas asistirán (mínimo 1).");
+        return;
+      }
+      cantidad = Math.min(Math.floor(n), 15);
+    }
+
+    try {
+      await addDoc(collection(db, "rsvps"), {
+        nombre,
+        telefono,
+        asistira,
+        cantidad,
+        creadoEn: serverTimestamp()
+      });
+
+      if (asistira === "si" && cantidad > 0) {
+        await updateDoc(statsRef, { totalAsistentes: increment(cantidad) });
+      }
+
+      alert("✅ Confirmación registrada");
+      form.reset();
+      document.getElementById("backdrop").style.display = "none";
+    } catch (err) {
+      console.error(err);
+      alert("❌ No se pudo guardar. Revisa Firestore Rules y que exista stats/public.");
+    }
+  });
+</script>
 
 </body>
 </html>
