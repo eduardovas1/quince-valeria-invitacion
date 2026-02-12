@@ -288,9 +288,11 @@ window.addEventListener("DOMContentLoaded",()=>{
         await updateDoc(statsRef, { totalAsistentes: increment(cantidad) });
       }
 
-      alert("✅ Confirmación registrada");
-      form.reset();
-      document.getElementById("backdrop").style.display = "none";
+      if (asistira === "si") {
+  window.location.href = "gracias-si.html";
+} else {
+  window.location.href = "gracias-no.html";
+}
     } catch (err) {
       console.error(err);
       alert("❌ No se pudo guardar. Revisa Firestore Rules y que exista stats/public.");
