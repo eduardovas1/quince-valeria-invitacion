@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gracias por confirmar</title>
+
 <style>
 body{
   margin:0;
@@ -15,27 +16,99 @@ body{
   font-family:Georgia,serif;
   text-align:center;
 }
+
+/* tarjeta */
 .card{
   background:white;
-  padding:40px;
-  border-radius:20px;
-  box-shadow:0 20px 50px rgba(0,0,0,.15);
+  padding:50px 40px;
+  border-radius:30px;
+  box-shadow:0 25px 60px rgba(0,0,0,.12);
+  max-width:420px;
+  width:90%;
 }
+
+/* titulo */
 h1{
   color:#d63384;
   font-size:32px;
+  margin-bottom:10px;
 }
+
+/* texto */
 p{
   font-size:18px;
-  color:#444;
+  color:#555;
+  margin:6px 0;
+}
+
+/* círculo cupo elegante */
+.cupo-circle{
+  width:140px;
+  height:140px;
+  margin:25px auto 20px;
+  border-radius:50%;
+  background:linear-gradient(145deg,#ffd6eb,#ffc2df);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  box-shadow:
+    0 15px 35px rgba(214,51,132,.25),
+    inset 0 4px 10px rgba(255,255,255,.6);
+  border:3px solid #ffb3d9;
+  position:relative;
+}
+
+/* brillo decorativo */
+.cupo-circle::after{
+  content:"";
+  position:absolute;
+  top:20px;
+  left:30px;
+  width:40px;
+  height:40px;
+  background:rgba(255,255,255,.4);
+  border-radius:50%;
+  filter:blur(10px);
+}
+
+/* número */
+.cupo-number{
+  font-size:48px;
+  font-weight:bold;
+  color:#b3005f;
+  line-height:1;
+}
+
+/* texto */
+.cupo-text{
+  font-size:14px;
+  color:#7a0044;
+  margin-top:6px;
+  letter-spacing:.5px;
 }
 </style>
 </head>
+
 <body>
+
 <div class="card">
   <h1>🎉 ¡Gracias por asistir!</h1>
-  <p>Estamos muy felices de que compartas este momento especial.</p>
-  <p>Te esperamos con mucha alegría 💕</p>
+
+  <!-- CÍRCULO DEL CUPO -->
+
+  <p>Tu confirmación es válida para</p>
+  
+  <div class="cupo-circle">
+    <div class="cupo-number">4</div>
+    <div class="cupo-text">PERSONAS</div>
+  </div>
+
+  
+
+  <p>Estamos muy felices de que compartas este momento especial 💕</p>
+  <p>Te esperamos con mucha alegría ✨</p>
 </div>
+
 </body>
 </html>
