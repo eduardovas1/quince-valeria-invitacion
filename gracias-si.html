@@ -17,75 +17,38 @@ body{
   text-align:center;
 }
 
-/* tarjeta */
 .card{
   background:white;
   padding:50px 40px;
   border-radius:30px;
   box-shadow:0 25px 60px rgba(0,0,0,.12);
-  max-width:420px;
+  max-width:450px;
   width:90%;
 }
 
-/* titulo */
 h1{
   color:#d63384;
-  font-size:32px;
-  margin-bottom:10px;
+  font-size:30px;
+  margin-bottom:12px;
 }
 
-/* texto */
-p{
-  font-size:18px;
-  color:#555;
-  margin:6px 0;
-}
-
-/* círculo cupo elegante */
-.cupo-circle{
-  width:140px;
-  height:140px;
-  margin:25px auto 20px;
-  border-radius:50%;
-  background:linear-gradient(145deg,#ffd6eb,#ffc2df);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  box-shadow:
-    0 15px 35px rgba(214,51,132,.25),
-    inset 0 4px 10px rgba(255,255,255,.6);
-  border:3px solid #ffb3d9;
-  position:relative;
-}
-
-/* brillo decorativo */
-.cupo-circle::after{
-  content:"";
-  position:absolute;
-  top:20px;
-  left:30px;
-  width:40px;
-  height:40px;
-  background:rgba(255,255,255,.4);
-  border-radius:50%;
-  filter:blur(10px);
-}
-
-/* número */
-.cupo-number{
-  font-size:48px;
+.name{
+  font-size:22px;
+  color:#000000;
   font-weight:bold;
-  color:#b3005f;
-  line-height:1;
 }
 
-/* texto */
-.cupo-text{
-  font-size:14px;
+p{
+  font-size:17px;
+  color:#555;
+  margin:8px 0;
+}
+
+.frase{
+  margin-top:20px;
+  font-style:italic;
   color:#7a0044;
-  margin-top:6px;
-  letter-spacing:.5px;
+  font-size:15px;
 }
 </style>
 </head>
@@ -93,22 +56,26 @@ p{
 <body>
 
 <div class="card">
-  <h1>🎉 ¡Gracias por asistir!</h1>
+  <h1 id="titulo"></h1>
 
-  <!-- CÍRCULO DEL CUPO -->
+  <p>Estamos muy felices de que nos acompañes en este momento tan especial 💕</p>
 
-  <p>Tu confirmación es válida para</p>
-  
-  <div class="cupo-circle">
-    <div class="cupo-number">4</div>
-    <div class="cupo-text">PERSONAS</div>
+  <p>Tu presencia será una bendición en esta celebración ✨</p>
+
+  <div class="frase">
+    “El Señor cumplirá su propósito en mí;  
+    tu gran amor, Señor, perdura para siempre.”  
+    <br><strong>Salmo 138:8</strong>
   </div>
-
-  
-
-  <p>Estamos muy felices de que compartas este momento especial 💕</p>
-  <p>Te esperamos con mucha alegría ✨</p>
 </div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const nombre = params.get("nombre") || "Querido invitado";
+
+  document.getElementById("titulo").innerHTML =
+    `🎉 ¡Gracias por asistir, <span class="name">${nombre}</span>!`;
+</script>
 
 </body>
 </html>
